@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('currencies', 'ApiCurrenciesController@index');
+Route::get('currencies/{id}', 'ApiCurrenciesController@show')->where('id', '[0-9]+');
