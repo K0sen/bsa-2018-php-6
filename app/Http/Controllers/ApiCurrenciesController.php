@@ -34,6 +34,6 @@ class ApiCurrenciesController extends Controller
             return response()->json(['message' => 'The currency was not found'], 404);
         }
 
-        return response()->json($currency);
+        return response()->json(CurrencyPresenter::present($currency));
     }
 }
