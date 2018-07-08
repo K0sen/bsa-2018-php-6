@@ -4,8 +4,6 @@ namespace App\Services;
 
 interface CurrencyRepositoryInterface
 {
-    // todo implement
-
     public function findAll(): array;
 
     public function findActive(): array;
