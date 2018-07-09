@@ -14,11 +14,17 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         $this->currencies = $currencies;
     }
 
+    /**
+     * @return array
+     */
     public function findAll(): array
     {
         return $this->currencies;
     }
 
+    /**
+     * @return array
+     */
     public function findActive(): array
     {
         return array_filter($this->currencies, function ($currency) {
@@ -27,6 +33,10 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         });
     }
 
+    /**
+     * @param int $id
+     * @return Currency|null
+     */
     public function findById(int $id): ?Currency
     {
         foreach ($this->currencies as $currency) {
@@ -38,6 +48,9 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         return null;
     }
 
+    /**
+     * @param Currency $currency
+     */
     public function save(Currency $currency): void
     {
         if ($this->findById($currency->getId()) === null) {
@@ -50,6 +63,9 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         }
     }
 
+    /**
+     * @param Currency $currency
+     */
     public function delete(Currency $currency): void
     {
         foreach ($this->currencies as $key => $actualCurrency) {
@@ -60,6 +76,9 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         }
     }
 
+    /**
+     * @return int
+     */
     public function findAvailableId(): int
     {
         for ($id = 1; $id <= $this->getCurrenciesCount(); $id++) {
@@ -71,6 +90,12 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         return $id;
     }
 
+    /**
+     * Finds currency index in array
+     *
+     * @param Currency $currency
+     * @return int|null
+     */
     private function findCurrencyIndex(Currency $currency): ?int
     {
         foreach ($this->currencies as $index => $actualCurrency) {
@@ -82,6 +107,9 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         return null;
     }
 
+    /**
+     * @return int
+     */
     private function getCurrenciesCount(): int
     {
         return \count($this->currencies);
