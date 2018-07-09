@@ -31,7 +31,8 @@ php artisan key:generate
 Реализовать интерфейс `CurrencyRepositoryInterface`. 
 
 Реализовать API для получения списка всех АКТИВНЫХ (active=true) в системе е-валют. Формат возвращаемых данных: JSON.
-Поля данных которые необходимо вернуть для каждой из валют: 'id', 'name', 'short_name', 'actual_course', 'actual_course_date'.
+Поля данных которые необходимо вернуть для каждой из валют: 'id', 'name', 'short_name', 'actual_course', 
+'actual_course_date', 'active'.
 
 * Route: GET /api/currencies
 
