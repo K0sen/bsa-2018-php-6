@@ -41,7 +41,12 @@ class CurrencyRepository implements CurrencyRepositoryInterface
     public function save(Currency $currency): void
     {
         if ($this->findById($currency->getId()) === null) {
-            array_push($this->currencies, $currency);
+            $this->currencies[] = $currency;
+        } else {
+            $index = $this->findCurrencyIndex($currency);
+            if ($index !== null) {
+                $this->currencies[$index] = $currency;
+            }
         }
     }
 
@@ -50,9 +55,35 @@ class CurrencyRepository implements CurrencyRepositoryInterface
         foreach ($this->currencies as $key => $actualCurrency) {
             if ($actualCurrency->getId() === $currency->getId()) {
                 unset($this->currencies[$key]);
+                break;
             }
-
-            break;
         }
+    }
+
+    public function findAvailableId(): int
+    {
+        for ($id = 1; $id <= $this->getCurrenciesCount(); $id++) {
+            if ($this->findById($id) === null) {
+                return $id;
+            }
+        }
+
+        return $id;
+    }
+
+    private function findCurrencyIndex(Currency $currency): ?int
+    {
+        foreach ($this->currencies as $index => $actualCurrency) {
+            if ($actualCurrency->getId() === $currency->getId()) {
+                return $index;
+            }
+        }
+
+        return null;
+    }
+
+    private function getCurrenciesCount(): int
+    {
+        return \count($this->currencies);
     }
 }
