@@ -13,4 +13,6 @@ interface CurrencyRepositoryInterface
     public function save(Currency $currency): void;
 
     public function delete(Currency $currency): void;
+
+    public function findAvailableId(): int;
 }

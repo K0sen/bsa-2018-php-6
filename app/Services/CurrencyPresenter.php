@@ -15,9 +15,9 @@ class CurrencyPresenter
         return [
             'id'                 => $currency->getId(),
             'name'               => $currency->getName(),
-            'short_name'         => $currency->getName(),
+            'short_name'         => $currency->getShortName(),
             'actual_course'      => $currency->getActualCourse(),
-            'actual_course_date' => $currency->getActualCourse(),
+            'actual_course_date' => date('Y-m-d H-i-s', $currency->getActualCourseDate()->getTimestamp()),
             'active'             => $currency->isActive()
         ];
     }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Services\CurrencyRepositoryInterface;
 use App\Services\CurrencyPresenter;
 
-class ApiCurrenciesController extends Controller
+class CurrencyController extends Controller
 {
     /**
      * @param CurrencyRepositoryInterface $currencyRepository

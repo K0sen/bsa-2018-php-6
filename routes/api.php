@@ -18,5 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('currencies', 'ApiCurrenciesController@index');
-Route::get('currencies/{id}', 'ApiCurrenciesController@show')->where('id', '[0-9]+');
+Route::namespace('Api')->group(function() {
+    Route::get('currencies', 'CurrencyController@index')
+        ->name('getApiCurrencies');
+    Route::get('currencies/{id}', 'CurrencyController@show')
+        ->where('id', '[0-9]+')
+        ->name('getApiCurrency');
+
+    Route::namespace('Admin')->group(function() {
+        Route::resource('admin/currencies', 'CurrencyController', [
+            'except' => ['create', 'edit']
+        ]);
+    });
+});
+
+

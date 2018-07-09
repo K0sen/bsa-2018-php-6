@@ -23,14 +23,14 @@ class CurrencyGenerator
         $apiCurrenciesArray = json_decode($response, true);
 
         if ($response && isset($apiCurrenciesArray['data'])) {
-            foreach ($apiCurrenciesArray['data'] as $currency) {
+            foreach ($apiCurrenciesArray['data'] as $key => $currency) {
                 $currenciesArray[] = new Currency(
                     $currency['id'],
                     $currency['name'],
                     $currency['symbol'],
                     $currency['quotes']['USD']['price'],
                     new \DateTime(),
-                    ((rand(1, 9) / 3) % 3) === 0
+                    (random_int(1, 9) % 3) !== 0 || $key === 1
                 );
             }
 
