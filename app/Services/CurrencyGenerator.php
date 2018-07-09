@@ -29,7 +29,7 @@ class CurrencyGenerator
                     $currency['name'],
                     $currency['symbol'],
                     $currency['quotes']['USD']['price'],
-                    new \DateTime(),
+                    new \DateTime('@' . rand(strtotime('-1 hours'), strtotime('+1 hours'))),
                     (random_int(1, 9) % 3) !== 0 || $key === 1
                 );
             }
@@ -48,13 +48,13 @@ class CurrencyGenerator
         return [
             new Currency(1, 'Bitcoin', 'BTC', 6620.92, new \DateTime(), true),
             new Currency(1027, 'Ethereum', 'ETH', 471.934, new \DateTime(), true),
-            new Currency(52, 'XRP', 'XRP',  0.470266, new \DateTime(), false),
+            new Currency(52, 'XRP', 'XRP', 0.470266, new \DateTime(), false),
             new Currency(1831, 'Bitcoin Cash', 'BCH', 725.873, new \DateTime(), true),
             new Currency(1765, 'EOS', 'EOS', 8.56014, new \DateTime(), false),
             new Currency(2, 'Litecoin', 'LTC', 81.8338, new \DateTime(), true),
             new Currency(512, 'Stellar', 'XLM', 0.203054, new \DateTime(), true),
             new Currency(2010, 'Cardano', 'ADA', 0.140243, new \DateTime(), true),
-            new Currency(1720, 'IOTA', 'MIOTA',1.05374, new \DateTime(), false),
+            new Currency(1720, 'IOTA', 'MIOTA', 1.05374, new \DateTime(), false),
             new Currency(825, 'Tether', 'USDT', 1.00384, new \DateTime(), true)
         ];
     }

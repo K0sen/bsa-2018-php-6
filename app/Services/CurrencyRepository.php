@@ -21,7 +21,7 @@ class CurrencyRepository implements CurrencyRepositoryInterface
 
     public function findActive(): array
     {
-        return array_filter($this->currencies, function($currency) {
+        return array_filter($this->currencies, function ($currency) {
             /** @var $currency Currency */
             return $currency->isActive();
         });
