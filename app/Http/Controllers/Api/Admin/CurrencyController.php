@@ -56,7 +56,6 @@ class CurrencyController extends Controller
      */
     public function store(Request $request)
     {
-//        if ($request->isMethod('post'))
         $currency = new Currency(
             $this->currencyRepository->findAvailableId(),
             $request->input('name'),

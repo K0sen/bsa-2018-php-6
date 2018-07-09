@@ -33,16 +33,20 @@
 <table align="center">
     <thead>
     <tr>
+        <th>&nbsp;</th>
         <th>Name</th>
         <th>Short name</th>
         <th>Actual course</th>
         <th>Actual course date</th>
-        <th>Active</th>
+        <th>Status</th>
     </tr>
     </thead>
     <tbody>
     @foreach ($currencies as $currency)
         <tr>
+            <td>
+                <img src="https://s2.coinmarketcap.com/static/img/coins/16x16/{{ $currency->getId() }}.png" alt="cryptocoin" />
+            </td>
             <td>{{ $currency->getName() }}</td>
             <td>{{ $currency->getShortName() }}</td>
             <td>{{ $currency->getActualCourse() }}</td>
